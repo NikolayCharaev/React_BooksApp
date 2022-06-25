@@ -1,11 +1,12 @@
 import React from "react";
 import BookCard from "./BookCard";
-
 const BookList = (props) => {
     return (
         <div className="list">
             {
                 props.books.map ((elem,i) => {
+                        const searchParams = elem.saleInfo.listPrice
+                        if (searchParams != undefined){
                     return <BookCard 
                             key={i}
                             image={elem.volumeInfo.imageLinks.smallThumbnail ? elem.volumeInfo.imageLinks.smallThumbnail : elem.volumeInfo.imageLinks.thumbnail}
@@ -14,8 +15,8 @@ const BookList = (props) => {
                             categories={elem.volumeInfo.categories[0]}
                             publishedDate={elem.volumeInfo.publishedDate}
                             />
+                        }
                 })
-            
             }
         </div>   
     )
